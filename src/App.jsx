@@ -9,6 +9,7 @@ import ImageDisplay from './components/ImageDisplay/ImageDisplay.jsx';
 import Generalizer from './components/Generalizer/Generalizer.jsx';
 import Signin from './components/Signin/Signin.jsx';
 import Register from './components/Register/Register.jsx';
+import { API_BASE_URL } from './config/api';
 
 function App() {
   const [input, setInput] = useState('');
@@ -29,7 +30,7 @@ function App() {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/v1/prediction', {
+      const response = await fetch(`${API_BASE_URL}/api/v1/prediction`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: input, id: user.id }),
